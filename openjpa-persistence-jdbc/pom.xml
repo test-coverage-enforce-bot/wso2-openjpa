@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -16,11 +16,9 @@
  KIND, either express or implied.  See the License for the
  specific language governing permissions and limitations
  under the License.
--->
-<!--
+--><!--
     Maven release plugin requires the project tag to be on a single line.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -85,8 +83,8 @@
                 <!--<connection.url>jdbc:hsqldb:target/database/openjpa-hsqldb-database;create=true</connection.url>-->
                 <connection.url>jdbc:hsqldb:mem:openjpa20-hsqldb-database</connection.url>
                 <connection.username>sa</connection.username>
-                <connection.password />
-                <jdbc.DBDictionary />
+                <connection.password/>
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -112,7 +110,7 @@
                 <connection.url>${openjpa.mysql.url}</connection.url>
                 <connection.username>${openjpa.mysql.username}</connection.username>
                 <connection.password>${openjpa.mysql.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
                 <!-- DBCP overrides for MySQL testing -->
                 <dbcp.maxIdle>0</dbcp.maxIdle>
                 <dbcp.minIdle>0</dbcp.minIdle>
@@ -141,7 +139,7 @@
                 <connection.url>${openjpa.postgresql.url}</connection.url>
                 <connection.username>${openjpa.postgresql.username}</connection.username>
                 <connection.password>${openjpa.postgresql.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
                 <!-- DBCP overrides -->
                 <dbcp.maxIdle>0</dbcp.maxIdle>
                 <dbcp.minIdle>0</dbcp.minIdle>
@@ -202,7 +200,7 @@
                 <connection.url>${openjpa.mssql.url}</connection.url>
                 <connection.username>${openjpa.mssql.username}</connection.username>
                 <connection.password>${openjpa.mssql.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -244,7 +242,7 @@
                 <connection.url>${openjpa.sqlserver.url}</connection.url>
                 <connection.username>${openjpa.sqlserver.username}</connection.username>
                 <connection.password>${openjpa.sqlserver.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -271,7 +269,7 @@
                 <connection.url>${openjpa.sybase.url}</connection.url>
                 <connection.username>${openjpa.sybase.username}</connection.username>
                 <connection.password>${openjpa.sybase.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -292,7 +290,7 @@
                 <connection.url>${openjpa.sybase.url}</connection.url>
                 <connection.username>${openjpa.sybase.username}</connection.username>
                 <connection.password>${openjpa.sybase.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -319,7 +317,7 @@
                 <connection.url>${openjpa.ingres.url}</connection.url>
                 <connection.username>${openjpa.ingres.username}</connection.username>
                 <connection.password>${openjpa.ingres.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -354,7 +352,7 @@
                 <connection.url>${openjpa.custom.url}</connection.url>
                 <connection.username>${openjpa.custom.username}</connection.username>
                 <connection.password>${openjpa.custom.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -402,7 +400,7 @@
                 <connection.url>${openjpa.custom.url}</connection.url>
                 <connection.username>${openjpa.custom.username}</connection.username>
                 <connection.password>${openjpa.custom.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
 
@@ -475,7 +473,7 @@
                 <connection.url>${openjpa.db2.url}</connection.url>
                 <connection.username>${openjpa.db2.username}</connection.username>
                 <connection.password>${openjpa.db2.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -608,7 +606,7 @@
                 <connection.url>${openjpa.ids.url}</connection.url>
                 <connection.username>${openjpa.ids.username}</connection.username>
                 <connection.password>${openjpa.ids.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -677,7 +675,7 @@
                 <connection.url>${openjpa.ids.url}</connection.url>
                 <connection.username>${openjpa.ids.username}</connection.username>
                 <connection.password>${openjpa.ids.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -745,7 +743,7 @@
                 <connection.url>${openjpa.oracle.url}</connection.url>
                 <connection.username>${openjpa.oracle.username}</connection.username>
                 <connection.password>${openjpa.oracle.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -790,7 +788,7 @@
                 <connection.url>${openjpa.soliddb.url}</connection.url>
                 <connection.username>${openjpa.soliddb.username}</connection.username>
                 <connection.password>${openjpa.soliddb.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
             <repositories>
                 <repository>
@@ -861,13 +859,13 @@
                         <phase>process-test-classes</phase>
                         <configuration>
                             <tasks>
-                                <ant antfile="src/main/ant/enhancer.xml" target="enhance" inheritRefs="true">
-                                    <property name="maven.test.skip" value="${maven.test.skip}" />
-                                    <property name="test" value="${test}" />
-                                    <property name="outdir" value="${project.build.outputDirectory}" />
-                                    <property name="project.build.testOutputDirectory" value="${project.build.testOutputDirectory}" />
-                                    <property name="openjpa.Log" value="${openjpa.Log}" />
-                                    <property name="build.enhance" value="${build.enhance}" />
+                                <ant antfile="src/main/ant/enhancer.xml" inheritRefs="true" target="enhance">
+                                    <property name="maven.test.skip" value="${maven.test.skip}"/>
+                                    <property name="test" value="${test}"/>
+                                    <property name="outdir" value="${project.build.outputDirectory}"/>
+                                    <property name="project.build.testOutputDirectory" value="${project.build.testOutputDirectory}"/>
+                                    <property name="openjpa.Log" value="${openjpa.Log}"/>
+                                    <property name="build.enhance" value="${build.enhance}"/>
                                 </ant>
                             </tasks>
                         </configuration>
@@ -1062,6 +1060,10 @@
                     </excludes>
                 </configuration>
             </plugin>
-        </plugins>
+        <plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+</plugin>
+    </plugins>
     </build>
 </project>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -16,11 +16,9 @@
  KIND, either express or implied.  See the License for the
  specific language governing permissions and limitations
  under the License.
--->
-<!--
+--><!--
     Maven release plugin requires the project tag to be on a single line.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -299,7 +297,7 @@
                        <configuration>
                            <argLine>${surefire.jvm.args}</argLine>
                            <includes>
-                               <include />
+                               <include/>
                            </includes>
                        </configuration>
                    </plugin>
@@ -331,8 +329,8 @@
             <properties>
                 <connection.driver.name>org.apache.derby.jdbc.EmbeddedDriver</connection.driver.name>
                 <connection.url>jdbc:derby:target/database/openjpa-derby-database;create=true</connection.url>
-                <connection.username />
-                <connection.password />
+                <connection.username/>
+                <connection.password/>
                 <!-- Tests are much faster without shutting derby down at the end of each test. -->
                 <jdbc.DBDictionary>ShutdownOnClose=false</jdbc.DBDictionary>
             </properties>
@@ -361,8 +359,8 @@
             <properties>
                 <connection.driver.name>org.apache.derby.jdbc.EmbeddedDriver</connection.driver.name>
                 <connection.url>jdbc:derby:memory:openjpa-derby-inmem-database;create=true</connection.url>
-                <connection.username />
-                <connection.password />
+                <connection.username/>
+                <connection.password/>
                 <!-- Tests are much faster without shutting derby down at the end of each test. -->
                 <jdbc.DBDictionary>ShutdownOnClose=false</jdbc.DBDictionary>
             </properties>
@@ -407,7 +405,7 @@
                 <connection.url>${openjpa.derbynet.url}</connection.url>
                 <connection.username>${openjpa.derbynet.username}</connection.username>
                 <connection.password>${openjpa.derbynet.password}</connection.password>
-                <jdbc.DBDictionary />
+                <jdbc.DBDictionary/>
             </properties>
         </profile>
     </profiles>
@@ -644,7 +642,8 @@
                             <value>${tests.openjpa.allowfailure}</value>
                         </property>
                     </systemProperties>
-                    </configuration>
+                    <argLine>${argLine}</argLine>
+          </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -878,7 +877,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -893,7 +892,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -908,7 +907,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -923,7 +922,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -938,7 +937,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute />
+                                        <execute/>
                                     </action>
                                 </pluginExecution>
 
@@ -953,7 +952,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -968,7 +967,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -983,7 +982,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
 
@@ -998,14 +997,58 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-            </plugins>
+            <plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.8.0</version>
+	<executions>
+		<execution>
+			<id>default-prepare-agent</id>
+			<goals>
+				<goal>prepare-agent</goal>
+			</goals>
+			<configuration>	
+				<propertyName>surefireArgLine</propertyName>
+			</configuration>
+		</execution>
+		<execution>
+			<id>default-report</id>
+			<goals>
+				<goal>report</goal>
+			</goals>
+		</execution>
+		<execution>
+			<id>default-check</id>
+			<goals>
+				<goal>check</goal>
+			</goals>
+			<configuration>
+				<rules>
+					<!-- implementation is needed only for Maven 2 -->
+					<rule implementation="org.jacoco.maven.RuleConfiguration">
+						<element>BUNDLE</element>
+						<limits>
+							<!-- implementation is needed only for Maven 2 -->
+							<limit implementation="org.jacoco.report.check.Limit">
+								<counter>COMPLEXITY</counter>
+								<value>COVEREDRATIO</value>
+								<minimum>0.9</minimum>
+							</limit>
+						</limits>
+					</rule>
+				</rules>
+			</configuration>
+		</execution>
+	</executions>
+</plugin>
+      </plugins>
         </pluginManagement>
 
         <plugins>

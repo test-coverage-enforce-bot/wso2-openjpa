@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -16,11 +16,9 @@
  KIND, either express or implied.  See the License for the
  specific language governing permissions and limitations
  under the License.   
--->
-<!-- 
+--><!-- 
     Maven release plugin requires the project tag to be on a single line. 
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -98,40 +96,40 @@
                         <phase>compile</phase>
                         <configuration>
                             <tasks>
-                                <property name="tmpdir" value="${java.io.tmpdir}/openjpamvntmp" />
+                                <property name="tmpdir" value="${java.io.tmpdir}/openjpamvntmp"/>
                                 <condition property="outdir" value="${project.build.outputDirectory}">
-                                    <available type="dir" file="${project.build.outputDirectory}" />
+                                    <available file="${project.build.outputDirectory}" type="dir"/>
                                 </condition>
 
-                                <property name="outdir" value="${tmpdir}" />
+                                <property name="outdir" value="${tmpdir}"/>
 
-                                <property name="svnversion.executable" value="svnversion" />
-                                <exec outputproperty="subversion.revision" failonerror="false" failifexecutionfails="false" executable="${svnversion.executable}">
-                                    <arg line="-c ${basedir}/.." />
+                                <property name="svnversion.executable" value="svnversion"/>
+                                <exec executable="${svnversion.executable}" failifexecutionfails="false" failonerror="false" outputproperty="subversion.revision">
+                                    <arg line="-c ${basedir}/.."/>
                                 </exec>
                                 # Write the svn info to a temp file 
-                                <echo file="pcenhancer.revision.file" /> 
-                                <exec output="pcenhancer.revision.file" failonerror="false" failifexecutionfails="false" executable="svn" append="false">
-                                    <arg line="info ../openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java" />
+                                <echo file="pcenhancer.revision.file"/> 
+                                <exec append="false" executable="svn" failifexecutionfails="false" failonerror="false" output="pcenhancer.revision.file">
+                                    <arg line="info ../openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java"/>
                                 </exec>
 
                                 # Remove all spaces so we can have a proper key
-                                <replace file="pcenhancer.revision.file" token=" " value="" />
+                                <replace file="pcenhancer.revision.file" token=" " value=""/>
                                 # Load the property file
-                                <property prefix="pcenhancer" file="pcenhancer.revision.file" />
-                                <delete file="pcenhancer.revision.file" />
+                                <property file="pcenhancer.revision.file" prefix="pcenhancer"/>
+                                <delete file="pcenhancer.revision.file"/>
 								
-                                <property name="subversion.revision" value="unknown" />
-                                <property name="pcenhancer.LastChangedRev" value="-1" />
+                                <property name="subversion.revision" value="unknown"/>
+                                <property name="pcenhancer.LastChangedRev" value="-1"/>
                                 <echo>Revision: ${subversion.revision}</echo>
                                 <echo>OpenJPA version: ${project.version}</echo>
                                     
-                                <mkdir dir="${outdir}/META-INF" />
+                                <mkdir dir="${outdir}/META-INF"/>
                                 <echo file="${outdir}/META-INF/org.apache.openjpa.revision.properties">revision.number=${subversion.revision}
 openjpa.version=${project.version}
 openjpa.enhancer.revision=${pcenhancer.LastChangedRev}
 </echo>
-                                <delete dir="${tmpdir}" />
+                                <delete dir="${tmpdir}"/>
                             </tasks>
                         </configuration>
                         <goals>
@@ -140,6 +138,14 @@ openjpa.enhancer.revision=${pcenhancer.LastChangedRev}
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
+        <plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+</plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+</plugin>
+    </plugins>
     </build>
 </project>
